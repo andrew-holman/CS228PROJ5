@@ -1,8 +1,9 @@
 package edu.iastate.cs228.proj5;
 /*
  *  @author Andrew Holman
- *
- *
+ * This class preforms a depth first search on a given graph and returns a stack
+ * of all the vertices in topological order. However if the graph has a cycle in
+ * it then the function will return null.
  */
 
 import java.util.HashMap;
