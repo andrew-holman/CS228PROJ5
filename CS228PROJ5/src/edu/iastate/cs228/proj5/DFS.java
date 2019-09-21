@@ -14,15 +14,9 @@ import java.util.Stack;
 public class DFS
 {
   /**
-   * This method creates a color map and a pred map (see example Graph.java
-   * under Week 13 of Lecture notes) and an empty stack of type Stack<V>. It
-   * colors each vertex "white" and sets the value of each vertex to null in the
-   * pred map (see Graph.java). Then as long as there is a "white" vertex w
-   * left, the method calls visitDFS(...) on the vertex w along with other
-   * parameters. If visitDFS(...) returns false, then this method returns null.
-   * Otherwise, it returns the stack containing the list of all vertices in a
-   * topological order, which is produced by the visitDFS(...) method. If aGraph
-   * is null, then it throws IllegalArgumentException.
+   * This method creates a color map and a pred map to do a depth first search on the given graph.
+   * @param aGraph Is the graph that is being searched.
+   * @return Returns a stack containing the list of all vertices in a topological order.
    */
   public static <V> Stack<V> depthFirstSearch(DiGraph<V> aGraph)
   {
@@ -48,21 +42,15 @@ public class DFS
   }
 
   /**
-   * 
-   * This method implements an iterative depth-first search algorithm for
-   * checking if the given graph is acyclic (has no cycles) and if so, generates
-   * a stack (named topoOrder) of all vertices in a topological order and
-   * returns true. Otherwise, it returns false. An iterative depth-first search
-   * algorithm is given in under lecture notes for an undirected graph (Week
-   * 13 of Lecture Notes). Here, 
-   * you need to modify the algorithm to make it work for a directed graph. Note
-   * that the edge iterator citer (inside Graph.java under Lecture Notes) should
-   * be changed from type Iterator<V> to type Iterator<Edge<V, Integer>>, and
-   * that citer.next().getVertex(), instead of citer.next(), gives the vertex w.
-   * If the vertex w is "gray", then the graph has a cycle. So the method
-   * returns false. Whenever a vertex is colored "black", the vertex is pushed
-   * onto the stack topoOrder. If the graph has no cycles (the execution reaches
-   * the end of the method), then the method returns true.
+   * Implements an iterative depth-first search algorithm to check if the given graph is acyclical.
+   * If the vertex w is gray, then the graph has a cycle. This means that the function would
+   * return false. However if a vertex is black then it is pushed onto the stack topoOrder.
+   * @param aGraph The graph that is being searched.
+   * @param s The individual vertex that is being checked for a cycle.
+   * @param color The color of the vertex.
+   * @param pred The map that is being used to hold the various vertices.
+   * @param topoOrder The stack that holds all the black colored vertices.
+   * @return true if the graph has no cycles.
    */
   protected static <V> boolean visitDFS(DiGraph<V> aGraph, V s, HashMap<V, String> color, HashMap<V, V> pred,
 	  Stack<V> topoOrder)
